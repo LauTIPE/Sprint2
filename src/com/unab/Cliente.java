@@ -2,21 +2,40 @@ package com.unab;
 
 import java.time.LocalDate;
 import java.time.Period;
+/**
 
-public class Cliente extends Usuario {
+La clase Cliente representa a un usuario que es cliente de la empresa.
+Contiene información personal del usuario, como su nombre, dirección y edad,
+así como información específica del cliente, como su número de teléfono,
+sistema de salud y AFP. También incluye métodos para establecer y obtener
+la información del usuario y para analizar la información del cliente.
+*/
+public class Cliente{ //extends Usuario {
 
 	// atributos
-	private String rut = "";
+	private String rut = " ";
 	private double telefono = 0;
-	private String afp = "";
+	private String afp = " ";
 	private int sistemaSalud = 0;
-	private String direccion = "";
-	private String comuna = "";
+	private String direccion = " ";
+	private String comuna = " ";
 	private int edad = 0;
 
+/**
+Crea un nuevo objeto Cliente con la información personal y de contacto del usuario.
+@param nombre el nombre del cliente
+@param apellidos los apellidos del cliente
+@param rut el RUT del cliente (debe tener entre 0 y 9 dígitos)
+@param telefono el número de teléfono del cliente
+@param afp la AFP del cliente
+@param sistemaSalud el sistema de salud del cliente (1 para Isapre, 2 para Fonasa, otro número para desconocido)
+@param direccion la dirección del cliente
+@param comuna la comuna del cliente
+@param edad la edad del cliente (se puede establecer más tarde...)
+*/
 	public Cliente(String nombre, String apellidos, String rut, double telefono, String afp, int sistemaSalud,
 			String direccion, String comuna, int edad) {
-		super(nombre, apellidos);
+		//super(nombre, apellidos);
 		if (rut.matches("[0-9]{6,8}")) {
 			this.rut = rut;
 		}
@@ -34,7 +53,10 @@ public class Cliente extends Usuario {
 	public String getRut() {
 		return rut;
 	}
-
+/**
+Establece el RUT del cliente.
+@param rut el nuevo RUT del cliente (debe tener entre 0 y 9 dígitos)
+*/
 	public void setRut(String rut) {
 		this.rut = rut;
 	}
@@ -89,7 +111,7 @@ public class Cliente extends Usuario {
 	public int getEdad() {
 		return edad;
 	}
-
+//metodo calcular edad
 	public static int calcularEdad(int año, int mes, int dia) {
 		if (año > 0 && mes > 0 && mes <= 12 && dia > 0 && dia <= 31) {
 			LocalDate fechaNacimiento = LocalDate.of(año, mes, dia);
@@ -101,7 +123,7 @@ public class Cliente extends Usuario {
 			return -1;
 		}
 	}
-
+//metodo set edad
 	public void setEdad(int año, int mes, int dia) {
 		int edadCalculada = calcularEdad(año, mes, dia);
 		if (edadCalculada != -1) {
@@ -110,9 +132,9 @@ public class Cliente extends Usuario {
 			System.out.println("No se pudo establecer la edad.");
 		}
 	}
-
+//metodo analizar usuario
 	public void analizarUsuario() {
-		super.analizarUsuario();
+	//	super.analizarUsuario();
 		System.out.println("Rut:" + rut);
 		System.out.println("Teléfono:" + telefono);
 		System.out.println("AFP:" + afp);
