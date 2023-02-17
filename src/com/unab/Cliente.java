@@ -177,14 +177,14 @@ public void setDireccion(String direccion) {
 		if (comuna == null) {
 			throw new IllegalArgumentException("La comuna no puede ser nula");
 		}
-		 // Verificar si la dirección es nula o si supera los 70 caracteres
+		 // Verificar si la comuna es nula o si supera los 70 caracteres
 		 if (comuna.trim().isEmpty()) {
 			throw new IllegalArgumentException("La comuna no puede estar vacía");
 		} else if (comuna.trim().length() > 50) {
 			throw new IllegalArgumentException("La comuna no puede superar los 70 caracteres");
 		}
 	
-		// Asignar la dirección al atributo correspondiente
+		// Asignar la comuna al atributo correspondiente
 		this.comuna = comuna;
 	}
 /**
