@@ -226,15 +226,10 @@ public void setEdad(int edad) {
 }
 
 //metodo analizar usuario
-	public void analizarUsuario() {
+public String analizarUsuario() {
 	super.analizarUsuario();
-		System.out.println("Rut:" + rut);
-		System.out.println("Teléfono:" + telefono);
-		System.out.println("AFP:" + afp);
-		System.out.println("Sistema de salud: " + sistemaSalud);
-		System.out.println("Dirección" + direccion);
-		System.out.println("Comuna" + comuna);
-		System.out.println("Edad" + edad);
-
+	
+		return "Cliente [ Teléfono:" + telefono+ "\n AFP:" + afp + "\n Sistema de salud: " + sistemaSalud + "\n Dirección" + direccion + "\n Comuna" + comuna + "\n Edad" + edad + "]";
 	}
+		
 }
