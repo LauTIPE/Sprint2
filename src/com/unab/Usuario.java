@@ -1,13 +1,16 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Usuario implements Asesoria{
+
+Scanner sc = new Scanner(System.in);
 
     // Atributos
     private String nombre;
     private LocalDate nacimiento;
-    private int rut;
+    private String rut;
 
     // Constructor vacio
 
@@ -15,7 +18,7 @@ public class Usuario implements Asesoria{
     }
 
     // Contructor con parámetros
-    public Usuario(String nombre, LocalDate nacimiento, int rut, LocalDate fechaActual) {
+    public Usuario(String nombre, LocalDate nacimiento, String rut, LocalDate fechaActual) {
         this.nombre = nombre;
         this.nacimiento = nacimiento;
         this.rut = rut;
@@ -55,17 +58,21 @@ public class Usuario implements Asesoria{
         this.nacimiento = nacimiento;
     }
 
-    public int getRut() {
+    public String getRut() {
         return this.rut;
     }
 
-    public void setRut(int rut) {
-        if (rut < 0 || rut > 99999999) {
-            System.out.println("RUT inválido. Por favor ingresa un RUT válido.");
-            return;
+    public void setRut(String rut) {
+        if (rut.matches("[0-9, kK-]{6,10}")) {
+            this.rut = rut;
+        } else {
+            System.out.println("El RUT ingresado no es válido. Por favor, ingrese un RUT válido.");
+            do {
+                System.out.print("Ingrese el RUT: ");
+                rut = sc.nextLine();
+            } while (!rut.matches("[0-9, kK-]{6,10}"));
+            this.rut = rut;
         }
-        this.rut = rut;
-
     }
 /*
  
@@ -77,8 +84,7 @@ public class Usuario implements Asesoria{
     int edad = Period.between(nacimiento, fechaActual).getYears();
     System.out.println("El usuario tiene" + edad + "años"); 
 }
-public void analizarUsuario() {
-    System.out.println("Nombre del usuario: " + nombre);
-    System.out.println("Rut del usuario: " + rut);
+public String analizarUsuario() {
+    return "Usuario [Nombre= " + nombre + " \n Rut= " + rut + "]";
 }
 }
